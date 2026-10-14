@@ -10,12 +10,15 @@
     "format": {
       "type": "csv",
       "parse": {
-        "change_pct": "number",
-        "quarter_2025": "number",
-        "quarter_2026": "number"
+        "change_pct": "number"
       }
     }
   },
+  "transform": [
+    {
+      "filter": "isValid(datum.state) && datum.state != ''"
+    }
+  ],
   "encoding": {
     "y": {
       "field": "state",
@@ -58,10 +61,15 @@
           "field": "Overnight trips",
           "type": "quantitative",
           "scale": {
-            "domain": [-7, 20],
+            "domain": [-8, 20],
             "zero": true
           },
-          "title": "Year-on-year change (%)"
+          "title": "Year-on-year change (%)",
+          "axis": {
+            "grid": true,
+            "gridColor": "#E6ECEB",
+            "tickCount": 8
+          }
         },
         "x2": {
           "field": "Overnight expenditure"
@@ -117,35 +125,7 @@
           }
         ]
       }
-    },
-
-{
-  "mark": {
-    "type": "rule",
-    "strokeDash": [4, 4],
-    "color": "#758A90",
-    "opacity": 0.65
-  },
-  "data": {
-    "values": [
-      {"state": "New South Wales"},
-      {"state": "Victoria"},
-      {"state": "Queensland"},
-      {"state": "South Australia"},
-      {"state": "Western Australia"},
-      {"state": "Tasmania"},
-      {"state": "Northern Territory"},
-      {"state": "Australian Capital Territory"}
-    ]
-  },
-  "encoding": {
-    "x": {
-      "datum": 0,
-      "type": "quantitative"
     }
-  }
-}
-
   ],
   "resolve": {
     "scale": {
