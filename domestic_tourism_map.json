@@ -1,0 +1,108 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Year-on-year percentage change in domestic overnight trips by Australian state and territory, June quarter 2025 to June quarter 2026. Tourism data: Tourism Research Australia.",
+  "width": "container",
+  "height": 460,
+  "background": "transparent",
+  "projection": {
+    "type": "mercator"
+  },
+  "data": {
+    "url": "australian-states.json",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "domestic_overnight_trips_state_change.csv"
+        },
+        "key": "state",
+        "fields": [
+          "change_pct",
+          "trips_2025_thousands",
+          "trips_2026_thousands"
+        ]
+      }
+    },
+    {
+      "calculate": "toNumber(datum.change_pct)",
+      "as": "change_numeric"
+    },
+    {
+      "calculate": "toNumber(datum.trips_2025_thousands)",
+      "as": "trips_2025"
+    },
+    {
+      "calculate": "toNumber(datum.trips_2026_thousands)",
+      "as": "trips_2026"
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#FFFFFF",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "color": {
+      "field": "change_numeric",
+      "type": "quantitative",
+      "title": "Change in overnight trips (%)",
+      "scale": {
+        "domain": [-5, 0, 5],
+        "range": [
+          "#C67A50",
+          "#F5F2EA",
+          "#187F83"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 250,
+        "format": "+.1f"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "change_numeric",
+        "type": "quantitative",
+        "title": "Change in trips",
+        "format": "+.1f"
+      },
+      {
+        "field": "trips_2025",
+        "type": "quantitative",
+        "title": "2025 trips (thousands)",
+        "format": ",.0f"
+      },
+      {
+        "field": "trips_2026",
+        "type": "quantitative",
+        "title": "2026 trips (thousands)",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelColor": "#597078",
+      "titleColor": "#102D3C"
+    }
+  }
+}
