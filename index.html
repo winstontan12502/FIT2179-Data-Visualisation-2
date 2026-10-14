@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Great Tourism Reset | FIT3179</title>
 
+  <!-- Libraries required to display Vega-Lite charts -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -209,6 +214,48 @@
         gap: 12px;
       }
     }
+    
+    .chart-panel {
+      background: #ffffff;
+      border: 1px solid #e3e9e8;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 24px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .chart-panel h3 {
+      font-size: 1.5rem;
+      margin: 0 0 10px;
+    }
+
+    .chart-description {
+      color: var(--muted);
+      margin: 0 0 25px;
+    }
+
+    .chart-source {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 20px;
+    }
+
+    #chart-trends {
+      width: 100%;
+      min-width: 0;
+    }
+
+    #chart-trends .vega-embed {
+      width: 100%;
+    }
+
+    @media (max-width: 700px) {
+      .chart-panel {
+        padding: 16px;
+      }
+    }
+
   </style>
 </head>
 
@@ -255,12 +302,23 @@
           examining how tourism activity has changed over time.
         </p>
 
-        <div class="chart-placeholder" id="chart-trends">
-          <div>
-            <strong>Tourism trends over time</strong>
-            Vega-Lite chart will appear here.
-          </div>
-        </div>
+
+<div class="chart-panel">
+  <h3>International visitors: a decade of disruption</h3>
+  <p class="chart-description">
+    Monthly short-term international visitor arrivals to Australia,
+    January 2016 to August 2026.
+  </p>
+
+  <div id="chart-trends"></div>
+
+  <p class="chart-source">
+    Source: Australian Bureau of Statistics,
+    Overseas Arrivals and Departures, Table 5.
+    Figures represent visitor trips, not unique individuals.
+  </p>
+</div>
+
 
         <div class="chart-grid">
           <div class="chart-placeholder" id="chart-seasonality">
@@ -377,6 +435,18 @@
       <p>Data visualisations and analysis in development.</p>
     </div>
   </footer>
+
+<script>
+  vegaEmbed('#chart-trends', 'international_arrivals.json', {
+    actions: false,
+    renderer: 'svg'
+  })
+  .catch(function(error) {
+    console.error('Error loading tourism chart:', error);
+    document.getElementById('chart-trends').textContent =
+      'Unable to load the chart. Please check the data and chart files.';
+  });
+</script>
 
 </body>
 </html>
