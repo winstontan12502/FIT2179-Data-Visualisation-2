@@ -269,6 +269,20 @@
   width: 100%;
 }
 
+#chart-map {
+  width: 100%;
+  min-width: 0;
+}
+
+#chart-map .vega-embed {
+  width: 100%;
+}
+
+#chart-map svg {
+  max-width: 100%;
+  height: auto;
+}
+
   </style>
 </head>
 
@@ -379,12 +393,26 @@
           differs between states, regions and major transport hubs.
         </p>
 
-        <div class="chart-placeholder" id="chart-map">
-          <div>
-            <strong>Australian tourism map</strong>
-            Planned geographic visualisation
-          </div>
-        </div>
+
+<div class="chart-panel">
+  <h3>Where did domestic tourism grow or decline?</h3>
+
+  <p class="chart-description">
+    Percentage change in domestic overnight trips by state
+    and territory, June quarter 2025 to June quarter 2026.
+    Teal indicates growth; orange indicates decline.
+  </p>
+
+  <div id="chart-map"></div>
+
+  <p class="chart-source">
+    Source: Tourism Research Australia,
+    Domestic Tourism Statistics, June quarter 2026,
+    Table 1a. Geographic boundaries: GeoJSON-Data.
+    Figures represent year-on-year percentage changes.
+  </p>
+</div>
+
 
         <div class="chart-grid">
           <div class="chart-placeholder">
@@ -480,6 +508,16 @@ vegaEmbed('#chart-seasonality', 'tourism_heatmap.json', {
   console.error('Error loading heatmap:', error);
   document.getElementById('chart-seasonality').textContent =
     'Unable to load the heatmap. Please check the data and JSON files.';
+});
+
+vegaEmbed('#chart-map', 'domestic_tourism_map.json', {
+  actions: false,
+  renderer: 'svg'
+})
+.catch(function(error) {
+  console.error('Error loading tourism map:', error);
+  document.getElementById('chart-map').textContent =
+    'Unable to load the map. Please check the data and geographic files.';
 });
 
 </script>
