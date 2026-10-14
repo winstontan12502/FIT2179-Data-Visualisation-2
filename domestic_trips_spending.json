@@ -118,23 +118,34 @@
         ]
       }
     },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeDash": [4, 4],
-        "color": "#758A90",
-        "opacity": 0.65
-      },
-      "data": {
-        "values": [{}]
-      },
-      "encoding": {
-        "x": {
-          "datum": 0,
-          "type": "quantitative"
-        }
-      }
+
+{
+  "mark": {
+    "type": "rule",
+    "strokeDash": [4, 4],
+    "color": "#758A90",
+    "opacity": 0.65
+  },
+  "data": {
+    "values": [
+      {"state": "New South Wales"},
+      {"state": "Victoria"},
+      {"state": "Queensland"},
+      {"state": "South Australia"},
+      {"state": "Western Australia"},
+      {"state": "Tasmania"},
+      {"state": "Northern Territory"},
+      {"state": "Australian Capital Territory"}
+    ]
+  },
+  "encoding": {
+    "x": {
+      "datum": 0,
+      "type": "quantitative"
     }
+  }
+}
+
   ],
   "resolve": {
     "scale": {
