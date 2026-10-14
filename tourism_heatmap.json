@@ -1,0 +1,112 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly short-term international visitor arrivals to Australia, 2016–2026. Source: ABS Overseas Arrivals and Departures, Table 5.",
+  "width": "container",
+  "height": 360,
+  "background": "transparent",
+  "data": {
+    "url": "international_arrivals_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "date": "date",
+        "visitor_arrivals": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "year(datum.date)",
+      "as": "year"
+    },
+    {
+      "calculate": "month(datum.date)",
+      "as": "month_num"
+    },
+    {
+      "calculate": "timeFormat(datum.date, '%b')",
+      "as": "month_name"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "#FFFFFF",
+    "strokeWidth": 2,
+    "cornerRadius": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "month_num",
+      "type": "ordinal",
+      "sort": "ascending",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value]",
+        "labelFontSize": 11,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": "ascending",
+      "title": null,
+      "axis": {
+        "labelFontSize": 12,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "color": {
+      "field": "visitor_arrivals",
+      "type": "quantitative",
+      "title": "Monthly arrivals",
+      "scale": {
+        "scheme": "teals",
+        "domain": [0, 1100000]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "format": "~s",
+        "gradientLength": 220
+      }
+    },
+    "tooltip": [
+      {
+        "field": "month_name",
+        "type": "nominal",
+        "title": "Month"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "visitor_arrivals",
+        "type": "quantitative",
+        "title": "Visitor arrivals",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#597078",
+      "labelFont": "DM Sans"
+    },
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelColor": "#597078",
+      "titleColor": "#102D3C"
+    }
+  }
+}
