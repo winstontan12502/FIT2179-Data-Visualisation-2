@@ -283,6 +283,20 @@
   height: auto;
 }
 
+#chart-comparison {
+  width: 100%;
+  min-width: 0;
+}
+
+#chart-comparison .vega-embed {
+  width: 100%;
+}
+
+#chart-comparison svg {
+  max-width: 100%;
+  height: auto;
+}
+
   </style>
 </head>
 
@@ -366,12 +380,26 @@
   </p>
 </div>
 
-          <div class="chart-placeholder" id="chart-comparison">
-            <div>
-              <strong>Before and after COVID-19</strong>
-              Planned comparative chart
-            </div>
-          </div>
+
+<div class="chart-panel">
+  <h3>Fewer trips, but more spending?</h3>
+
+  <p class="chart-description">
+    Year-on-year percentage changes in domestic overnight
+    trips and expenditure across Australian states and
+    territories, June quarter 2025 to June quarter 2026.
+  </p>
+
+  <div id="chart-comparison"></div>
+
+  <p class="chart-source">
+    Source: Tourism Research Australia,
+    Domestic Tourism Statistics, June quarter 2026,
+    Table 1a. Expenditure is measured in nominal
+    dollars and has not been adjusted for inflation.
+  </p>
+</div>
+
         </div>
 
         <div class="insight">
@@ -518,6 +546,16 @@ vegaEmbed('#chart-map', 'domestic_tourism_map.json', {
   console.error('Error loading tourism map:', error);
   document.getElementById('chart-map').textContent =
     'Unable to load the map. Please check the data and geographic files.';
+});
+
+vegaEmbed('#chart-comparison', 'domestic_trips_spending.json', {
+  actions: false,
+  renderer: 'svg'
+})
+.catch(function(error) {
+  console.error('Error loading trips and spending chart:', error);
+  document.getElementById('chart-comparison').textContent =
+    'Unable to load the comparison chart. Please check the data and JSON files.';
 });
 
 </script>
