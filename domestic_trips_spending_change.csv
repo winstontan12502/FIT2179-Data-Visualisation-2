@@ -1,0 +1,17 @@
+state,indicator,change_pct,quarter_2025,quarter_2026,unit
+New South Wales,Overnight trips,-1.278,9483.469,9362.28,thousand trips
+New South Wales,Overnight expenditure,5.428,7132.534,7519.719,"million AUD, current prices"
+Victoria,Overnight trips,-2.615,7497.05,7301.035,thousand trips
+Victoria,Overnight expenditure,3.779,5393.804,5597.621,"million AUD, current prices"
+Queensland,Overnight trips,-1.792,6474.587,6358.56,thousand trips
+Queensland,Overnight expenditure,-2.943,6556.309,6363.364,"million AUD, current prices"
+South Australia,Overnight trips,-4.348,1911.341,1828.237,thousand trips
+South Australia,Overnight expenditure,17.473,1531.741,1799.386,"million AUD, current prices"
+Western Australia,Overnight trips,-2.187,2464.542,2410.636,thousand trips
+Western Australia,Overnight expenditure,3.048,2706.545,2789.042,"million AUD, current prices"
+Tasmania,Overnight trips,-3.037,698.91,677.688,thousand trips
+Tasmania,Overnight expenditure,-0.39,712.786,710.005,"million AUD, current prices"
+Northern Territory,Overnight trips,0.323,275.587,276.477,thousand trips
+Northern Territory,Overnight expenditure,-2.105,462.463,452.726,"million AUD, current prices"
+Australian Capital Territory,Overnight trips,-4.96,531.266,504.917,thousand trips
+Australian Capital Territory,Overnight expenditure,-0.146,500.417,499.687,"million AUD, current prices"
