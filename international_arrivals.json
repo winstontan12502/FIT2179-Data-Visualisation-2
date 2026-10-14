@@ -1,0 +1,128 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly short-term international visitor arrivals to Australia, January 2016 to August 2026. Source: Australian Bureau of Statistics, Overseas Arrivals and Departures, Table 5.",
+  "width": "container",
+  "height": 360,
+  "background": "transparent",
+  "data": {
+    "url": "international_arrivals_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "date": "date",
+        "visitor_arrivals": "number"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "color": "#DFB878",
+        "opacity": 0.13
+      },
+      "encoding": {
+        "x": {
+          "datum": "2020-03-01",
+          "type": "temporal"
+        },
+        "x2": {
+          "datum": "2022-02-01"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#187F83",
+        "strokeWidth": 2.5,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "grid": false,
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "visitor_arrivals",
+          "type": "quantitative",
+          "title": "Monthly visitor arrivals",
+          "scale": {
+            "zero": true
+          },
+          "axis": {
+            "format": "~s",
+            "tickCount": 6
+          }
+        },
+        "tooltip": [
+          {
+            "field": "date",
+            "type": "temporal",
+            "title": "Month",
+            "format": "%B %Y"
+          },
+          {
+            "field": "visitor_arrivals",
+            "type": "quantitative",
+            "title": "Visitor arrivals",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2020-04-01",
+            "label": "COVID-19 disruption"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 5,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#78562B"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 1020000,
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#597078",
+      "titleColor": "#102D3C",
+      "gridColor": "#E3E9E8",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}
