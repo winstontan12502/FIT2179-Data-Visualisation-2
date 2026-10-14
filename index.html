@@ -4,12 +4,379 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Great Tourism Reset</title>
+  <title>The Great Tourism Reset | FIT3179</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #102d3c;
+      --teal: #187f83;
+      --sand: #dfb878;
+      --cream: #f8f6f0;
+      --white: #ffffff;
+      --muted: #597078;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #d6e5e6;
+      text-decoration: none;
+      font-size: 0.82rem;
+    }
+
+    nav a:hover {
+      color: var(--sand);
+    }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 100px 0 115px;
+    }
+
+    .eyebrow {
+      color: var(--sand);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.18;
+    }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      margin: 20px 0 24px;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      font-size: 1.2rem;
+      color: #c7d9de;
+    }
+
+    .hero-rule {
+      width: 80px;
+      height: 4px;
+      background: var(--sand);
+      margin-top: 36px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: var(--white);
+    }
+
+    .section-number {
+      color: var(--teal);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin: 14px 0 20px;
+    }
+
+    .section-intro {
+      max-width: 750px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 38px;
+    }
+
+    .chart-placeholder {
+      background: #edf3f1;
+      border: 1px dashed #91b7b5;
+      border-radius: 8px;
+      min-height: 290px;
+      padding: 45px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .chart-placeholder strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .chart-grid .chart-placeholder {
+      min-height: 260px;
+    }
+
+    .insight {
+      border-left: 4px solid var(--sand);
+      padding: 15px 22px;
+      background: rgba(223, 184, 120, 0.12);
+      margin-top: 28px;
+      color: var(--navy);
+    }
+
+    footer {
+      padding: 50px 0;
+      background: var(--navy);
+      color: #cfdee2;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--sand);
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 65px 0 75px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>The Great Tourism Reset</h1>
-  <h2>Australia's Tourism Industry</h2>
-  <p>Has Australia's tourism industry truly recovered, or has the way people travel fundamentally changed?</p>
-  <p>FIT3179 Data Visualisation 2</p>
+
+  <header>
+    <div class="container header-inner">
+      <div class="brand">THE GREAT TOURISM RESET</div>
+      <nav aria-label="Page sections">
+        <a href="#recovery">Recovery</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#behaviour">Travel patterns</a>
+        <a href="#economy">Economy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <div class="container">
+        <div class="eyebrow">Australia's Tourism Industry</div>
+
+        <h1>The Great<br>Tourism Reset.</h1>
+
+        <p class="hero-description">
+          Has Australia's tourism industry truly recovered,
+          or has the way people travel fundamentally changed?
+        </p>
+
+        <div class="hero-rule"></div>
+      </div>
+    </div>
+
+    <section id="recovery">
+      <div class="container">
+        <div class="section-number">CHAPTER 01</div>
+        <h2>The Rise, Fall and Recovery</h2>
+
+        <p class="section-intro">
+          Australia's tourism industry has experienced a period
+          of profound disruption. But recovery is more than a
+          return to previous visitor numbers. We begin by
+          examining how tourism activity has changed over time.
+        </p>
+
+        <div class="chart-placeholder" id="chart-trends">
+          <div>
+            <strong>Tourism trends over time</strong>
+            Vega-Lite chart will appear here.
+          </div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-placeholder" id="chart-seasonality">
+            <div>
+              <strong>Tourism seasonality</strong>
+              Planned heatmap
+            </div>
+          </div>
+
+          <div class="chart-placeholder" id="chart-comparison">
+            <div>
+              <strong>Before and after COVID-19</strong>
+              Planned comparative chart
+            </div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <strong>Question to investigate:</strong>
+          Have different tourism indicators returned to
+          pre-pandemic levels at the same pace?
+        </div>
+      </div>
+    </section>
+
+    <section id="destinations">
+      <div class="container">
+        <div class="section-number">CHAPTER 02</div>
+        <h2>Where Visitors Go</h2>
+
+        <p class="section-intro">
+          Tourism is not distributed evenly across Australia.
+          Geographic comparisons can reveal how travel activity
+          differs between states, regions and major transport hubs.
+        </p>
+
+        <div class="chart-placeholder" id="chart-map">
+          <div>
+            <strong>Australian tourism map</strong>
+            Planned geographic visualisation
+          </div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-placeholder">
+            <div>
+              <strong>Airport activity</strong>
+              Planned proportional symbol map
+            </div>
+          </div>
+
+          <div class="chart-placeholder">
+            <div>
+              <strong>Air travel connections</strong>
+              Planned route flow map
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="behaviour">
+      <div class="container">
+        <div class="section-number">CHAPTER 03</div>
+        <h2>How Travel Patterns Differ</h2>
+
+        <p class="section-intro">
+          Beyond headline visitor totals, how people travel,
+          when they travel and how long they stay can reveal
+          important differences in tourism behaviour.
+        </p>
+
+        <div class="chart-placeholder">
+          <div>
+            <strong>Visitor behaviour and travel patterns</strong>
+            Planned advanced visualisation
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="economy">
+      <div class="container">
+        <div class="section-number">CHAPTER 04</div>
+        <h2>What Recovery Really Means</h2>
+
+        <p class="section-intro">
+          Visitor numbers alone cannot describe the industry's
+          economic recovery. Spending, accommodation and other
+          indicators help reveal a more complete picture.
+        </p>
+
+        <div class="chart-placeholder">
+          <div>
+            <strong>Tourism expenditure and economic impact</strong>
+            Planned comparative visualisation
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>The Great Tourism Reset</strong>
+      <p>FIT3179 Data Visualisation 2 | October 2026</p>
+      <p>
+        Planned data sources:
+        <a href="https://www.tra.gov.au/" target="_blank" rel="noopener noreferrer">Tourism Research Australia</a>,
+        <a href="https://www.abs.gov.au/" target="_blank" rel="noopener noreferrer">ABS</a>,
+        <a href="https://www.bitre.gov.au/" target="_blank" rel="noopener noreferrer">BITRE</a>.
+      </p>
+      <p>Data visualisations and analysis in development.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
