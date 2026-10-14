@@ -256,6 +256,19 @@
       }
     }
 
+.chart-grid-single {
+  grid-template-columns: 1fr;
+}
+
+#chart-seasonality {
+  width: 100%;
+  min-width: 0;
+}
+
+#chart-seasonality .vega-embed {
+  width: 100%;
+}
+
   </style>
 </head>
 
@@ -320,13 +333,24 @@
 </div>
 
 
-        <div class="chart-grid">
-          <div class="chart-placeholder" id="chart-seasonality">
-            <div>
-              <strong>Tourism seasonality</strong>
-              Planned heatmap
-            </div>
-          </div>
+        <div class="chart-grid chart-grid-single">
+
+<div class="chart-panel">
+  <h3>When does Australia welcome the most visitors?</h3>
+
+  <p class="chart-description">
+    Monthly international visitor arrivals, 2016–2026.
+    Darker colours indicate higher visitor numbers.
+  </p>
+
+  <div id="chart-seasonality"></div>
+
+  <p class="chart-source">
+    Source: Australian Bureau of Statistics,
+    Overseas Arrivals and Departures, Table 5.
+    Data for 2026 ends in August.
+  </p>
+</div>
 
           <div class="chart-placeholder" id="chart-comparison">
             <div>
@@ -446,6 +470,18 @@
     document.getElementById('chart-trends').textContent =
       'Unable to load the chart. Please check the data and chart files.';
   });
+
+  
+vegaEmbed('#chart-seasonality', 'tourism_heatmap.json', {
+  actions: false,
+  renderer: 'svg'
+})
+.catch(function(error) {
+  console.error('Error loading heatmap:', error);
+  document.getElementById('chart-seasonality').textContent =
+    'Unable to load the heatmap. Please check the data and JSON files.';
+});
+
 </script>
 
 </body>
