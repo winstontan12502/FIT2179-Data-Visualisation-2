@@ -1,0 +1,163 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Changes in domestic overnight trips and nominal overnight expenditure by Australian state and territory, June quarter 2025 to June quarter 2026. Source: Tourism Research Australia.",
+  "width": "container",
+  "height": 350,
+  "background": "transparent",
+  "data": {
+    "url": "domestic_trips_spending_change.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "change_pct": "number",
+        "quarter_2025": "number",
+        "quarter_2026": "number"
+      }
+    }
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": [
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "South Australia",
+        "Western Australia",
+        "Tasmania",
+        "Northern Territory",
+        "Australian Capital Territory"
+      ],
+      "title": null,
+      "axis": {
+        "labelLimit": 190,
+        "labelFontSize": 11,
+        "ticks": false,
+        "domain": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#CBD5D6",
+        "strokeWidth": 3
+      },
+      "transform": [
+        {
+          "pivot": "indicator",
+          "value": "change_pct",
+          "groupby": ["state"]
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Overnight trips",
+          "type": "quantitative",
+          "scale": {
+            "domain": [-7, 20],
+            "zero": true
+          },
+          "title": "Year-on-year change (%)"
+        },
+        "x2": {
+          "field": "Overnight expenditure"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110
+      },
+      "encoding": {
+        "x": {
+          "field": "change_pct",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "indicator",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Overnight trips",
+              "Overnight expenditure"
+            ],
+            "range": [
+              "#187F83",
+              "#D19A61"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "indicator",
+            "type": "nominal",
+            "title": "Indicator"
+          },
+          {
+            "field": "change_pct",
+            "type": "quantitative",
+            "title": "Year-on-year change (%)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 4],
+        "color": "#758A90",
+        "opacity": 0.65
+      },
+      "data": {
+        "values": [{}]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#597078",
+      "titleColor": "#102D3C",
+      "gridColor": "#E6ECEB",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelColor": "#597078"
+    }
+  }
+}
